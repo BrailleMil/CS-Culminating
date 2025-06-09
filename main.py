@@ -1,4 +1,8 @@
+import os
 from utilities import get_valid_int, apply_random_discount
+
+def clear():
+    os.system('clear')
 
 items = ['Chips', 'Chocolate', 'Gummies', 'Cookies', 'Water']
 prices = [1.25, 1.5, 1.0, 1.75, 1.0]
@@ -41,28 +45,34 @@ def process_payment(total):
 def manager_menu():
     if input('password: ') != PASSWORD:
         return
+    clear()
     while True:
+        clear()
         print('1 change item')
         print('2 change cost')
         print('3 restock')
         print('4 exit')
         choice = get_valid_int('choice: ', 1, 4)
         if choice == 1:
+            clear()
             display_items()
             index = get_valid_int('item number: ', 1, len(items)) - 1
             change_item(index)
         elif choice == 2:
+            clear()
             display_items()
             index = get_valid_int('item number: ', 1, len(items)) - 1
             change_cost(index)
         elif choice == 3:
             restock()
+            clear()
         else:
             break
 
 
 def user_menu():
     while True:
+        clear()
         display_items()
         print(str(len(items) + 1) + ' exit')
         choice = get_valid_int('choice: ', 1, len(items) + 1)
@@ -78,13 +88,16 @@ def user_menu():
 
 def main():
     while True:
+        clear()
         print('1 manager')
         print('2 user')
         print('3 exit')
         choice = get_valid_int('choice: ', 1, 3)
         if choice == 1:
+            clear()
             manager_menu()
         elif choice == 2:
+            clear()
             user_menu()
         else:
             break
