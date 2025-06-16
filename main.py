@@ -48,11 +48,13 @@ def process_payment(total):
 
 # define the manager_menu function to handle manager operations
 def manager_menu():
-    if input('password: ') != PASSWORD:
+    if input('Manager\'s Password: ') != PASSWORD:
         return
     clear()
     while True:
         clear()
+        # welcome message for the manager
+        print('Welcome to the manager\'s vending machine menu.')
         # display the items and their details
         print('1. Change item')
         print('2. Change cost')
@@ -66,11 +68,13 @@ def manager_menu():
             display_items()
             index = get_valid_int('Item number: ', 1, len(items)) - 1
             change_item(index)
+            clear()
         elif choice == 2:
             clear()
             display_items()
             index = get_valid_int('Item number: ', 1, len(items)) - 1
             change_cost(index)
+            clear()
         elif choice == 3:
             restock()
             print('All items have been restocked.')
@@ -82,8 +86,8 @@ def manager_menu():
 # define the user_menu function to handle user operations
 def user_menu():
     while True:
-        # clear the console
-        clear()
+        # welcome message for the user
+        print('Welcome to the vending machine.')
         # display the items and their details
         display_items()
         # prompt the user to choose an item and quantity
@@ -98,10 +102,12 @@ def user_menu():
         # calculate the total cost, apply a random discount, process payment, and show change
         total = purchase(choice - 1, qty)
         total = apply_random_discount(total)
+        clear()
         print('Total $' + format(total, '.2f'))
         change, paid = process_payment(total)
         print('Change $' + format(change, '.2f'))
         show_change(change)
+        clear()
 
 # define the main function to run the program
 def main():
